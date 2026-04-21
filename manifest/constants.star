@@ -99,3 +99,14 @@ ManifestConstants = struct(
     VALID_FEATURES = VALID_FEATURES,
     PORT_RANGES = PORT_RANGES,
 )
+
+# =============================================================================
+# INDIVIDUAL EXPORTS for load() compatibility
+# =============================================================================
+# These enable: load("./manifest/constants.star", "MANIFEST_FILENAME_YAML")
+# =============================================================================
+
+MANIFEST_FILENAME = MANIFEST_FILENAME
+MANIFEST_FILENAME_YAML = MANIFEST_FILENAME_YAML
+MANIFEST_FILENAME_NEW = MANIFEST_FILENAME_NEW
+MANIFEST_FILENAME_NEW_YAML = MANIFEST_FILENAME_NEW_YAML
