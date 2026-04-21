@@ -6,21 +6,30 @@
 # NOTE: This is the "manual" scanner - it finds files in a specific folder.
 # For auto-discovery from Tilt's discovery system, use discovery.star instead.
 
-load("../manifest/constants.star", "MANIFEST_FILENAME_NEW")
+load("./manifest/constants.star", "MANIFEST_FILENAME_NEW")
 
 def discover_json_manifests(root_path):
     """
     Discover all JSON manifest files in a given root path.
     
     Args:
-        root_path: Relative path from .tilt/topologies/tilt/discovery/
-                   e.g., "../../../../services/product"
+        root_path: Path relative to project root (e.g., "services/product")
+                   or absolute path. Uses TDK_PROJECT_ROOT env var if set.
     
     Returns:
         List of manifest file paths (strings)
     """
-    # Search for service.json files only (migration complete - legacy no longer supported)
-    cmd = "find " + root_path + " -type f -name '" + MANIFEST_FILENAME_NEW + "' 2>/dev/null | sort"
+    # Get project root from environment variable set by main Tiltfile
+    project_root = os.environ.get('TDK_PROJECT_ROOT', '.')
+    
+    # Construct absolute path from project root
+    if root_path.startswith('/'):
+        full_path = root_path
+    else:
+        full_path = project_root + "/" + root_path
+    
+    # Search for service.json files
+    cmd = "find " + full_path + " -type f -name '" + MANIFEST_FILENAME_NEW + "' 2>/dev/null | sort"
     result = str(local(cmd, quiet=True))
     
     manifests = []
