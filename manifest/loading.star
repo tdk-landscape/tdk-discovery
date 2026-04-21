@@ -21,8 +21,8 @@ load('../../../platform/docker/constants.star', 'PlatformDockerConstants')
 load('../../../../../.tilt/TILT_SERVICE_DEFAULTS.star', 'BASE_PORT_FRONTEND', 'BASE_PORT_BACKEND', 'HEALTH_CHECK_PATH')
 
 # Environment variable to disable deprecation warnings
-_DISABLE_WARNINGS = os.environ.get('BEAUTY_CRM_DISABLE_MANIFEST_WARNINGS', '') == 'true'
-_LEGACY_LOADER_ONLY = os.environ.get('BEAUTY_CRM_LEGACY_LOADER_ONLY', '') == 'true'
+_DISABLE_WARNINGS = os.environ.get('TDK_DISABLE_MANIFEST_WARNINGS', '') == 'true'
+_LEGACY_LOADER_ONLY = os.environ.get('TDK_LEGACY_LOADER_ONLY', '') == 'true'
 
 
 def _check_prisma_folder(service_path):
@@ -194,7 +194,7 @@ def _apply_manifest_defaults(manifest, service_path):
     
     Convention over Configuration:
     - features: ["nats", "prisma"] -> usePrisma=True, useNats=True
-    - domain: "appointment" -> databaseName="beauty_crm_appointment"
+    - domain: "appointment" -> databaseName="TDK_appointment"
     - domain: "appointment" -> traefik.host="appointment.backend.beauty.local"
     - domain: "appointment" -> nats.queueGroup="appointment_backend_svc"
     """

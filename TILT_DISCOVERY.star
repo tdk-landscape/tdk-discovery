@@ -6,7 +6,7 @@
 # ⚠️  DEVELOPER NOTICE: This is a SYSTEM CONFIG file.
 #    For human-friendly docs, see: TILT_CONFIG.md or tilt.config.json
 #
-# This file defines service discovery settings for the Beauty CRM platform.
+# This file defines service discovery settings for the TDK Landscape platform.
 # Discovery automatically finds and registers services from the filesystem.
 #
 # 📖 TO EDIT DISCOVERY SETTINGS:
@@ -125,9 +125,9 @@ def get_synthesis_config():
         # Enable auto-computation of basePath for frontends
         "auto_compute_base_path": True,
 
-        # Database naming pattern: beauty_crm_{domain}_{service_function}
-        # Example: services/product/salon/salon-management-backend -> beauty_crm_salon_management
-        "database_name_pattern": "beauty_crm_{domain}_{function}",
+        # Database naming pattern: TDK_{domain}_{service_function}
+        # Example: services/product/salon/salon-management-backend -> TDK_salon_management
+        "database_name_pattern": "TDK_{domain}_{function}",
 
         # Backend name pattern for frontends: {domain}-management-backend
         "backend_name_pattern": "{domain}-management-backend",
@@ -266,7 +266,7 @@ def get_dependency_resolution_config():
 
         # Library dependency patterns (package.json prefixes)
         "library_dependency_prefixes": [
-            "@beauty-crm/",
+            "@tdk/",
         ],
 
         # Default internal dependencies for service types
